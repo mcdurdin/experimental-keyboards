@@ -1,0 +1,20 @@
+﻿{
+  "options" : {
+    "device" : "any",
+    "keyboardBaseUri" : "http://marc.durdin.net/wp-content/uploads/2015/11/",
+    "fontBaseUri" : "http://marc.durdin.net/wp-content/uploads/2015/11/"
+  },
+  "keyboard" : {
+    "id" : "khmer10",
+    "name" : "Khmer (NiDA)",
+    "filename" : "khmer10-1.1.js",
+    "version" : "1.1",
+    "lastModified" : "2015-11-14T10:53:32.243+11:00",
+    "languages" : [
+      {
+        "id" : "khm",
+        "name" : "Khmer"
+      }
+      ]
+  }
+}
