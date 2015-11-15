@@ -26,6 +26,12 @@
   <MRU>
     <File>
       <ID>id_MRU0</ID>
+      <Filename>khmerism.kps</Filename>
+      <FileType>.kps</FileType>
+      <FullPath>C:\tavultesoft\experimental-keyboards\khmerism\source\khmerism.kps</FullPath>
+    </File>
+    <File>
+      <ID>id_MRU1</ID>
       <Filename>khmerism.kmn</Filename>
       <FileType>.kmn</FileType>
       <FullPath>C:\tavultesoft\experimental-keyboards\khmerism\source\khmerism.kmn</FullPath>
