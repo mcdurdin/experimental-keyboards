@@ -1,0 +1,108 @@
+﻿store(&VERSION) '9.0'
+store(&INCLUDECODES) 'unicodedata-khmer.txt'
+
+begin Unicode > use(main)
+
+
+group(main) using keys
+
+store(lower_input) \
+    	'`123' \
+    	'4567' \
+    	'890-' \
+    	'='    \
+               \
+    	'qwer' \
+    	'tyui' \
+    	'op[]' \
+    	'\'    \
+               \
+    	'asdf' \
+    	'ghjk' \
+    	'l;' "'" \
+               \
+    	'zxcv' \
+    	'bnm,' \
+    	'./'
+
+store(lower_output) \
+    	$ZERO_WIDTH_SPACE $KHMER_LETTER_LA $KHMER_LETTER_VO $KHMER_LETTER_YO \
+    	$KHMER_LETTER_NNO $KHMER_LETTER_HA $KHMER_LETTER_DO $KHMER_VOWEL_SIGN_AU  \
+    	$KHMER_VOWEL_SIGN_AI $KHMER_VOWEL_SIGN_OE $KHMER_VOWEL_SIGN_IE $KHMER_VOWEL_SIGN_YA \
+    	$KHMER_SIGN_LEK_TOO \
+    	\
+    	$KHMER_LETTER_DA $KHMER_LETTER_TA $KHMER_LETTER_BA $KHMER_LETTER_KA \
+    	$KHMER_LETTER_CA $KHMER_VOWEL_SIGN_OO $KHMER_VOWEL_SIGN_AE $KHMER_SIGN_COENG \
+    	$KHMER_VOWEL_SIGN_I $KHMER_VOWEL_SIGN_II $KHMER_VOWEL_SIGN_Y $KHMER_VOWEL_SIGN_YY \
+    	'.' \
+    	\    	
+    	$KHMER_LETTER_SA $KHMER_LETTER_NO $KHMER_LETTER_MO $KHMER_LETTER_NGO \
+    	$KHMER_LETTER_NYO $KHMER_VOWEL_SIGN_E $KHMER_VOWEL_SIGN_AA $KHMER_SIGN_MUUSIKATOAN \
+    	$KHMER_SIGN_REAHMUK \
+    	\    	
+    	$KHMER_LETTER_LO $KHMER_LETTER_TO $KHMER_LETTER_PO $KHMER_LETTER_KO \
+    	$KHMER_LETTER_PHA $KHMER_LETTER_QA $KHMER_VOWEL_SIGN_U $KHMER_VOWEL_SIGN_UU \
+    	$KHMER_VOWEL_SIGN_UA $KHMER_SIGN_BANTOC
+    	
+store(upper_input) \
+    	'~!@#' \
+    	'$%^&' \
+    	'*()_' \
+    	'+' \
+               \
+    	'QWER' \
+    	'TYUI' \
+    	'OP{}' \
+    	'|' \
+               \
+    	'ASDF' \
+    	'GHJK' \
+    	'L:"' \
+               \
+    	'ZXCV' \
+    	'BNM<' \
+    	'>?'
+
+store(upper_input) \
+    	$KHMER_CURRENCY_SYMBOL_RIEL $KHMER_DIGIT_ONE $KHMER_DIGIT_TWO $KHMER_DIGIT_THREE \
+    	$KHMER_DIGIT_FOUR $KHMER_DIGIT_FIVE $KHMER_INDEPENDENT_VOWEL_QAU $KHMER_SIGN_YUUKALEAPINTU \
+    	$KHMER_SIGN_AHSDA $KHMER_SIGN_TOANDAKHIAT $KHMER_SIGN_SAMYOK_SANNYA $KHMER_SIGN_ROBAT \
+    	$KHMER_SIGN_KAKABAT \
+    	\    	
+    	$KHMER_DIGIT_SIX $KHMER_DIGIT_SEVEN $KHMER_DIGIT_EIGHT $KHMER_DIGIT_NINE \
+    	$KHMER_DIGIT_ZERO $KHMER_INDEPENDENT_VOWEL_QUUV $KHMER_LETTER_KHA $KHMER_LETTER_KHO \
+    	$KHMER_LETTER_THA $KHMER_LETTER_THO $KHMER_LETTER_SHA $KHMER_LETTER_SSO \
+    	'!' \
+    	\    	
+    	$KHMER_LETTER_TA $KHMER_INDEPENDENT_VOWEL_QU $KHMER_INDEPENDENT_VOWEL_QE $KHMER_INDEPENDENT_VOWEL_RYY \
+    	$KHMER_INDEPENDENT_VOWEL_LYY '*' $KHMER_SIGN_TRIISAP $KHMER_LETTER_CO \
+    	$KHMER_LETTER_PHO $KHMER_LETTER_CHA $KHMER_LETTER_CHO \
+    	\    	
+    	$KHMER_INDEPENDENT_VOWEL_QII $KHMER_INDEPENDENT_VOWEL_QUU $KHMER_INDEPENDENT_VOWEL_QOO_TYPE_ONE $KHMER_INDEPENDENT_VOWEL_RY \
+    	$KHMER_INDEPENDENT_VOWEL_LY $KHMER_INDEPENDENT_VOWEL_QAI $KHMER_LETTER_TTHA $KHMER_LETTER_TTHO \
+    	$KHMER_SIGN_KHAN '?'
+
+store(ralt_input) \
+    	[RALT K_BKQUOTE] \
+                                                    \
+    	[RALT K_Q] [RALT K_W] [RALT K_E] [RALT K_R] \
+    	[RALT K_T] [RALT K_RBRKT] [RALT K_BKSLASH]  \
+                                                    \    	
+    	[RALT K_A] [RALT K_S] [RALT K_D] [RALT K_F] \  
+                                                    \    	
+    	[RALT K_Z] [RALT K_X]
+
+store(ralt_output) \    	
+    	$KHMER_SIGN_KOOMUUT \   
+    	\    	
+    	'.,+-' \
+    	'%' $ZERO_WIDTH_JOINER $ZERO_WIDTH_NON_JOINER \
+    	\    	
+    	"'" '"%/' \
+    	'()'
+                   
+store(input) outs(lower_input) outs(upper_input) outs(ralt_input)
+store(output) outs(lower_output) outs(upper_output) outs(ralt_output)
+    	
++ any(input) > index(output, 1)
+
