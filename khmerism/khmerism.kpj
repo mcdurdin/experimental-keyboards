@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <KeymanDeveloperProject>
   <Options>
-    <BuildPath></BuildPath>
-    <CompilerWarningsAsErrors>False</CompilerWarningsAsErrors>
+    <BuildPath>$PROJECTPATH\build</BuildPath>
+    <CompilerWarningsAsErrors>True</CompilerWarningsAsErrors>
     <WarnDeprecatedCode>True</WarnDeprecatedCode>
   </Options>
   <Files>
@@ -12,7 +12,9 @@
       <Filepath>source\khmerism.kmn</Filepath>
       <FileVersion>1.0</FileVersion>
       <FileType>.kmn</FileType>
-      <Details/>
+      <Details>
+        <Name>Khmerism</Name>
+      </Details>
     </File>
   </Files>
 </KeymanDeveloperProject>

@@ -1,5 +1,9 @@
 ﻿store(&VERSION) '9.0'
 store(&INCLUDECODES) 'unicodedata-khmer.txt'
+store(&NAME) 'Khmerism'
+store(&TARGETS) 'windows macosx web'
+store(&ETHNOLOGUECODE) 'khm'
+store(&VISUALKEYBOARD) 'khmerism.kvk'
 
 begin Unicode > use(main)
 
@@ -37,8 +41,8 @@ store(lower_output) \
     	'.' \
     	\    	
     	$KHMER_LETTER_SA $KHMER_LETTER_NO $KHMER_LETTER_MO $KHMER_LETTER_NGO \
-    	$KHMER_LETTER_NYO $KHMER_VOWEL_SIGN_E $KHMER_VOWEL_SIGN_AA $KHMER_SIGN_MUUSIKATOAN \
-    	$KHMER_SIGN_REAHMUK \
+    	$KHMER_LETTER_NYO $KHMER_VOWEL_SIGN_E $KHMER_LETTER_RO $KHMER_VOWEL_SIGN_AA \ 
+    	$KHMER_SIGN_MUUSIKATOAN $KHMER_SIGN_REAHMUK $KHMER_SIGN_NIKAHIT \
     	\    	
     	$KHMER_LETTER_LO $KHMER_LETTER_TO $KHMER_LETTER_PO $KHMER_LETTER_KO \
     	$KHMER_LETTER_PHA $KHMER_LETTER_QA $KHMER_VOWEL_SIGN_U $KHMER_VOWEL_SIGN_UU \
@@ -63,7 +67,7 @@ store(upper_input) \
     	'BNM<' \
     	'>?'
 
-store(upper_input) \
+store(upper_output) \
     	$KHMER_CURRENCY_SYMBOL_RIEL $KHMER_DIGIT_ONE $KHMER_DIGIT_TWO $KHMER_DIGIT_THREE \
     	$KHMER_DIGIT_FOUR $KHMER_DIGIT_FIVE $KHMER_INDEPENDENT_VOWEL_QAU $KHMER_SIGN_YUUKALEAPINTU \
     	$KHMER_SIGN_AHSDA $KHMER_SIGN_TOANDAKHIAT $KHMER_SIGN_SAMYOK_SANNYA $KHMER_SIGN_ROBAT \
@@ -92,11 +96,21 @@ store(ralt_input) \
                                                     \    	
     	[RALT K_Z] [RALT K_X]
 
+store(ctrlalt_input) \
+    	[CTRL ALT K_BKQUOTE] \
+                                                    \
+    	[CTRL ALT K_Q] [CTRL ALT K_W] [CTRL ALT K_E] [CTRL ALT K_R] \
+    	[CTRL ALT K_T] [CTRL ALT K_RBRKT] [CTRL ALT K_BKSLASH]  \
+                                                    \    	
+    	[CTRL ALT K_A] [CTRL ALT K_S] [CTRL ALT K_D] [CTRL ALT K_F] \  
+                                                    \    	
+    	[CTRL ALT K_Z] [CTRL ALT K_X]
+
 store(ralt_output) \    	
     	$KHMER_SIGN_KOOMUUT \   
     	\    	
     	'.,+-' \
-    	'%' $ZERO_WIDTH_JOINER $ZERO_WIDTH_NON_JOINER \
+    	'%' $ZERO_WIDTH_JOINER $ZERO_WIDTH_NON-JOINER \
     	\    	
     	"'" '"%/' \
     	'()'
@@ -104,5 +118,13 @@ store(ralt_output) \
 store(input) outs(lower_input) outs(upper_input) outs(ralt_input)
 store(output) outs(lower_output) outs(upper_output) outs(ralt_output)
     	
-+ any(input) > index(output, 1)
+c + any(input) > index(output, 1)
+
+
++ any(lower_input) > index(lower_output, 1) 
++ any(upper_input)  > index(upper_output, 1) 
+
+$keymanonly: + any(ralt_input) > index(ralt_output, 1)
+$keymanweb: + any(ctrlalt_input) > index(ralt_output, 1)
+
 

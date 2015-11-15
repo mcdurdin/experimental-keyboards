@@ -1,0 +1,1 @@
+KeymanWeb.KRS(new Stub_Keyboard_khmerism()); function Stub_Keyboard_khmerism() {this.KF="khmerism-1.0.js";this.KI="Keyboard_khmerism";this.KN="Khmerism";}
