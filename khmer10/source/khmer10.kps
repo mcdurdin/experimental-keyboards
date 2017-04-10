@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package>
+  <System>
+    <KeymanDeveloperVersion>10.0.836.0</KeymanDeveloperVersion>
+    <FileVersion>7.0</FileVersion>
+  </System>
+  <Options>
+    <ExecuteProgram></ExecuteProgram>
+    <MSIFileName></MSIFileName>
+    <MSIOptions></MSIOptions>
+  </Options>
+  <Buttons>
+    <Button>
+      <ButtonType>install</ButtonType>
+      <Caption>&amp;Install</Caption>
+      <URL></URL>
+      <Left>0</Left>
+      <Top>0</Top>
+    </Button>
+    <Button>
+      <ButtonType>cancel</ButtonType>
+      <Caption>Cancel</Caption>
+      <URL></URL>
+      <Left>0</Left>
+      <Top>0</Top>
+    </Button>
+    <Button>
+      <ButtonType>about</ButtonType>
+      <Caption>&amp;About...</Caption>
+      <URL></URL>
+      <Left>0</Left>
+      <Top>0</Top>
+    </Button>
+  </Buttons>
+  <Registry/>
+  <StartMenu>
+    <Folder></Folder>
+    <Items/>
+  </StartMenu>
+  <Info>
+    <Name URL="">NiDA Khmer</Name>
+    <Copyright URL="">© 2006 State Library of Victoria, 2017 SIL</Copyright>
+    <Version URL="">1.3</Version>
+  </Info>
+  <Files>
+    <File>
+      <Name>KhmerOS.ttf</Name>
+      <Description>Font Khmer OS</Description>
+      <CopyLocation>0</CopyLocation>
+      <FileType>.ttf</FileType>
+    </File>
+    <File>
+      <Name>..\build\khmer10.kmx</Name>
+      <Description>Keyboard Khmer (NiDA)</Description>
+      <CopyLocation>0</CopyLocation>
+      <FileType>.kmx</FileType>
+    </File>
+    <File>
+      <Name>..\build\khmer10.kvk</Name>
+      <Description>File khmer10.kvk</Description>
+      <CopyLocation>0</CopyLocation>
+      <FileType>.kvk</FileType>
+    </File>
+  </Files>
+  <Strings/>
+</Package>

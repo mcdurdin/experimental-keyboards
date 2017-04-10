@@ -18,7 +18,11 @@ store(&MESSAGE) "Unicode keyboard layout using the NiDA keyboard layout."
 store(&VISUALKEYBOARD) 'khmer10.kvk'
 store(&TARGETS) 'any windows'
 store(&LAYOUTFILE) 'khmer10-layout.js'
-store(&KEYBOARDVERSION) '1.1'
+store(&KEYBOARDVERSION) '1.3'
+store(&BITMAP) 'khmer10.ico'
+store(&ETHNOLOGUECODE) 'khm'
+store(&LANGUAGE) 'x0453'
+store(&WINDOWSLANGUAGES) 'x0453'
 
 begin Unicode > use(main)
 
@@ -93,9 +97,39 @@ store(subcons) \
   U+1790 U+1791 U+1792 U+1793 U+1794 U+1795 U+1796 U+1797 \
   U+1798 U+1799 U+179A U+179B U+179C U+179D U+179E U+179F \
   U+17A0 U+17A1 U+17A2
+  
+store(vowel) \
+  U+17B6 U+17B7 U+17B8 U+17B9 U+17BA U+17BB U+17BC U+17BD \
+  U+17BE U+17BF U+17C0 U+17C1 U+17C2 U+17C3 U+17C4 U+17C5
+store(vowel_second) \
+  U+17C6 U+17C7         
 
+store(trisap_muusikatoan) U+17C9 U+17CA 
+  
+store(prevowel) U+17C1 U+17C2 U+17C3 
+store(prevowel_key) 'eES'
 
 group(main) using keys
+
+c Constraints
+
+any(vowel) + "'" > context beep
+U+17C6 + "'" > context beep
+U+17C7 + "'" > context beep
+U+17CB + "'" > context beep
+
+c Rotation
+
+any(prevowel) + any(prevowel_key) > index(prevowel, 2)
+
+U+17C7 + 'H' > U+17C8
+U+17C8 + 'H' > U+17C7
+
+c Reordering - sala oum
+
+U+17C6 + 'u' > U+17BB U+17C6
+
+c Basic rules
 
 + any(input12) > index(level12,1)
 + any(input3) > index(level3,1)
@@ -104,8 +138,6 @@ group(main) using keys
 + [K_SPACE] > U+200B
 + [SHIFT K_SPACE] > U+0020
 + [CTRL ALT K_SPACE] > U+00A0   
-
-+ any(input_subcons) > U+17D2 index(subcons, 1)
 
 + "A" > U+17B6 U+17C6
 + "V" > U+17C1 U+17C7
@@ -118,6 +150,10 @@ U+17C1 U+17C7 + [K_BKSP] > nul
 U+17C4 U+17C7 + [K_BKSP] > nul
 U+17BB U+17C6 + [K_BKSP] > nul
 U+17BB U+17C7 + [K_BKSP] > nul
+
+c Mobile/tablet touch layout
+
++ any(input_subcons) > U+17D2 index(subcons, 1)
 platform('tablet') U+17D2 any(subcons) + [K_BKSP] > nul
 platform('mobile') U+17D2 any(subcons) + [K_BKSP] > nul
 
@@ -127,5 +163,45 @@ platform('mobile') U+17D2 any(subcons) + [K_BKSP] > nul
 + [SHIFT K_NPPLUS] > U+002B
 + [K_NPMINUS] > U+002D
 + [SHIFT K_NPMINUS] > U+002D 
- 
+
+match > use(normalise)
+
+group(normalise)
+
+c Normalise vowels typed separately
+
+U+17C1 U+17B6 > U+17C4
+U+17C1 U+17B8 > U+17BE
+
+c Reordering - trisap and muusikatoan store before vowel
+
+any(vowel) any(trisap_muusikatoan) > context(2) context(1)
+any(trisap_muusikatoan) any(vowel) any(trisap_muusikatoan) > context(3) context(2)
+
+c Rotate vowels, marks
+
+any(vowel) any(vowel) > context(2) c beep
+any(trisap_muusikatoan) any(trisap_muusikatoan) > context(2)
+
+c Rotation of double vowels
+
+any(vowel) any(vowel_second) any(vowel) > context(3)
+any(vowel) any(vowel) any(vowel_second) > context(2) context(3)
+any(vowel) any(vowel_second) any(vowel) any(vowel_second) > context(3) context(4)
+any(vowel_second) any(vowel_second) > context(2)
+any(vowel_second) any(vowel) > context(2) 
+any(vowel) U+17B6 U+17C6 > context(2) context(3)
+any(vowel) any(vowel_second) U+17B6 U+17C6 > context(3) context(4)
+U+17B6 U+17C6 any(vowel) > context(3)
+U+17B6 U+17C6 any(vowel) any(vowel_second) > context(3) context(4)
+                
+c Delete extraneous coeng markers
+
+U+17D2 U+17D2 > context(1)
+U+17D2 any(vowel) > context(2)
+U+17D2 any(vowel_second) > context(2)
+
+any(vowel) U+17D2 any(subcons) > context(2) context(3) context(1)
+U+17BB U+17C6 U+17D2 any(subcons) > context(3) context(4) context(1) context(2)  
+
 c EOF
